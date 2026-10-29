@@ -6,6 +6,8 @@
 @import '@fontsource/poppins/latin-700.css';
 @import './styles/brand.css';
 @import './styles/screens.css';
+@import './styles/header.css';
+@import './styles/footer.css';
 
 * {
   box-sizing: border-box;

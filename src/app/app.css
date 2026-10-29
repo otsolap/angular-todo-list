@@ -1,38 +1,26 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   color: var(--color-white);
-  background: var(--color-primary-dark);
+  background-color: var(--color-primary-dark);
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: var(--line-height-body);
 }
 
 .page {
+  flex: 1 0 auto;
   width: min(40rem, calc(100% - 2rem));
   margin: 0 auto;
-  padding: var(--spacing-double-half) 0 var(--spacing-quadruple);
+  padding: var(--spacing-double-half) 0 var(--spacing-double);
 }
 
 h1,
 h2,
+h3,
 label {
   font-family: var(--font-heading);
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--color-primary-light);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-h1 {
-  margin: var(--spacing-quarter) 0 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: var(--line-height-heading);
 }
 
 h2 {
@@ -49,6 +37,11 @@ h2 {
 
 .lede {
   margin: var(--spacing-half) 0 0;
+}
+
+.page__columns {
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -189,5 +182,23 @@ button[type='submit']:hover {
   .list li {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+/* Desktop styles */
+@media (width >= 1280px) {
+  .page {
+    width: min(80rem, calc(100% - 2rem));
+  }
+
+  .page__columns {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--spacing-single);
+  }
+
+  .page__columns .card {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }

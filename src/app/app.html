@@ -1,16 +1,22 @@
-<main class="page">
-  <header class="mast">
-    <p class="eyebrow">Angular, TypeScript, Reactive Forms</p>
-    <h1>Todo list</h1>
-    <p class="lede">
-      @if (openCount() === 1) {
-        1 open task.
-      } @else {
-        {{ openCount() }} open tasks.
-      }
-    </p>
+<div class="header">
+  <header class="header__bar">
+    <div class="header__brand">
+      <h1 class="header__title"><a href="/">Todo list</a></h1>
+      <p class="header__slogan">Angular, TypeScript, Reactive Forms</p>
+    </div>
   </header>
+</div>
 
+<main class="page">
+  <p class="lede">
+    @if (openCount() === 1) {
+      1 open task.
+    } @else {
+      {{ openCount() }} open tasks.
+    }
+  </p>
+
+  <div class="page__columns">
   <form class="card" [formGroup]="form" (ngSubmit)="save()">
     <h2>{{ editingId() ? 'Edit task' : 'New task' }}</h2>
 
@@ -73,4 +79,47 @@
       </ul>
     }
   </section>
+  </div>
 </main>
+
+<footer class="footer">
+  <div class="footer__columns footer__columns--2">
+    <div class="footer__column">
+      <h2 class="footer__heading">Otso Lappalainen</h2>
+      <p class="footer__text">
+        Playground for Angular, Reactive Forms. Reach out to me via the following channels.
+      </p>
+    </div>
+    <div class="footer__column">
+      <h3 class="footer__heading">Follow</h3>
+      <div class="footer__links">
+        <a class="footer__link" href="https://x.com/@otso_lap" target="_blank" rel="noreferrer">
+          <span class="footer__icon-wrap">
+            <span class="footer__icon footer__icon--x-logo" aria-hidden="true"></span>
+          </span>
+          x.com/@otso_lap
+        </a>
+        <a
+          class="footer__link"
+          href="https://www.linkedin.com/in/otsolap/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="footer__icon-wrap">
+            <span class="footer__icon footer__icon--linkedin" aria-hidden="true"></span>
+          </span>
+          linkedin.com/in/otsolap/
+        </a>
+        <a class="footer__link" href="https://varangianventure.com/" target="_blank" rel="noreferrer">
+          <span class="footer__icon-wrap">
+            <span class="footer__icon footer__icon--spider-web" aria-hidden="true"></span>
+          </span>
+          Portfolio: Varangian Venture
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__sub">
+    <span class="footer__brand">Otso Lappalainen &#169; 2026</span>
+  </div>
+</footer>
