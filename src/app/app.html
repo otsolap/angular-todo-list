@@ -1,0 +1,76 @@
+<main class="page">
+  <header class="mast">
+    <p class="eyebrow">Angular, TypeScript, Reactive Forms</p>
+    <h1>Todo list</h1>
+    <p class="lede">
+      @if (openCount() === 1) {
+        1 open task.
+      } @else {
+        {{ openCount() }} open tasks.
+      }
+    </p>
+  </header>
+
+  <form class="card" [formGroup]="form" (ngSubmit)="save()">
+    <h2>{{ editingId() ? 'Edit task' : 'New task' }}</h2>
+
+    <label for="title">Task</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      autocomplete="off"
+      placeholder="Write a task"
+      [attr.aria-invalid]="titleError() ? true : null"
+      [attr.aria-describedby]="titleError() ? 'title-error' : null"
+    />
+
+    @if (titleError(); as error) {
+      <p id="title-error" class="error" role="alert">{{ error }}</p>
+    }
+
+    <div class="actions">
+      <button type="submit">{{ editingId() ? 'Save changes' : 'Add task' }}</button>
+      @if (editingId()) {
+        <button type="button" class="quiet" (click)="cancelEdit()">Cancel</button>
+      }
+    </div>
+  </form>
+
+  <section class="card" aria-labelledby="task-list-heading">
+    <div class="list-head">
+      <h2 id="task-list-heading">Tasks</h2>
+      <div class="filters" role="group" aria-label="Filter tasks">
+        @for (mode of filters; track mode) {
+          <button
+            type="button"
+            [class.active]="filter() === mode"
+            [attr.aria-pressed]="filter() === mode"
+            (click)="selectFilter(mode)"
+          >
+            {{ filterLabels[mode] }}
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (visibleItems().length === 0) {
+      <p class="empty">{{ emptyMessage() }}</p>
+    } @else {
+      <ul class="list">
+        @for (todo of visibleItems(); track todo.id) {
+          <li [class.done]="todo.done" [class.editing]="editingId() === todo.id">
+            <label class="check">
+              <input type="checkbox" [checked]="todo.done" (change)="toggle(todo.id)" />
+              <span>{{ todo.title }}</span>
+            </label>
+            <div class="row-actions">
+              <button type="button" (click)="edit(todo)">Edit</button>
+              <button type="button" (click)="remove(todo.id)">Delete</button>
+            </div>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</main>
