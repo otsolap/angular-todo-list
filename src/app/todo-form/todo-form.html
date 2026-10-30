@@ -1,0 +1,25 @@
+<form class="card" [formGroup]="form" (ngSubmit)="save()">
+  <h2>{{ todo() ? 'Edit task' : 'New task' }}</h2>
+
+  <label for="title">Task</label>
+  <input
+    id="title"
+    type="text"
+    formControlName="title"
+    autocomplete="off"
+    placeholder="Write a task"
+    [attr.aria-invalid]="titleError() ? true : null"
+    [attr.aria-describedby]="titleError() ? 'title-error' : null"
+  />
+
+  @if (titleError(); as error) {
+    <p id="title-error" class="error" role="alert">{{ error }}</p>
+  }
+
+  <div class="actions">
+    <button type="submit">{{ todo() ? 'Save changes' : 'Add task' }}</button>
+    @if (todo()) {
+      <button type="button" class="quiet" (click)="cancelEdit()">Cancel</button>
+    }
+  </div>
+</form>

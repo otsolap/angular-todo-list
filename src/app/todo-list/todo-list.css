@@ -1,0 +1,120 @@
+:host {
+  display: block;
+}
+
+h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: var(--line-height-subheading);
+}
+
+.card {
+  margin-top: var(--spacing-single);
+  padding: var(--spacing-single) 1.1rem 1.15rem;
+  background-color: var(--color-primary);
+  border: .0625rem solid var(--color-primary-semidark);
+  border-radius: var(--spacing-single);
+}
+
+.empty {
+  color: var(--color-primary-light);
+}
+
+.filters,
+.row-actions,
+.list-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-half);
+}
+
+.list-head {
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  padding: var(--spacing-half) var(--spacing-three-quarters);
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 600;
+  background-color: transparent;
+  border: .0625rem solid var(--color-primary-light);
+  border-radius: var(--spacing-single);
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: .125rem solid var(--color-secondary-light);
+  outline-offset: .125rem;
+}
+
+.filters button.active {
+  color: var(--button-secondary-color);
+  background-color: var(--button-secondary-bg);
+  border-color: var(--button-secondary-bg);
+  font-weight: 700;
+}
+
+.filters button.active:hover {
+  background-color: var(--button-secondary-hover-bg);
+  border-color: var(--button-secondary-hover-bg);
+}
+
+.list {
+  margin: var(--spacing-half) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-three-quarters);
+  align-items: stretch;
+  justify-content: space-between;
+  padding: .7rem 0;
+  border-top: .0625rem solid color-mix(in srgb, var(--color-white) 18%, transparent);
+}
+
+.check {
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  margin: 0;
+  font-weight: 400;
+}
+
+.check span {
+  overflow-wrap: anywhere;
+}
+
+.done .check span {
+  color: var(--color-primary-light);
+  text-decoration: line-through;
+}
+
+.editing {
+  margin: 0 -.35rem;
+  padding-right: .35rem;
+  padding-left: .35rem;
+  background-color: color-mix(in srgb, var(--color-tertiary) 35%, transparent);
+}
+
+/* Small styles */
+@media (width >= 640px) {
+  .list li {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Desktop styles */
+@media (width >= 1280px) {
+  :host {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}

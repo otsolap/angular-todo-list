@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .footer {
   width: 100%;
   display: flex;
@@ -30,7 +34,13 @@
 .footer__heading {
   margin: 0;
   padding-top: var(--spacing-single);
+  font-family: var(--font-heading);
   font-weight: 700;
+}
+
+h2.footer__heading {
+  font-size: 1.5rem;
+  line-height: var(--line-height-subheading);
 }
 
 .footer__text {
